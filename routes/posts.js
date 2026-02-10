@@ -104,10 +104,10 @@ router.delete('/:id', verify, async (req, res) => {
     }
 });
 
-// Get Drafts (Authenticated User)
+// Get User Posts (Dashboard - All Statuses)
 router.get('/user/drafts', verify, async (req, res) => {
     try {
-        let query = { status: 'draft' };
+        let query = {}; // Removed status: 'draft' constraint to show all posts
         if (req.user.role !== 'admin') {
             query.author = req.user._id;
         }
